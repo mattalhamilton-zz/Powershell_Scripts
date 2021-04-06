@@ -46,7 +46,7 @@ while ($true)
 #Task 3
 clear
 Write-Host("Task 3`r`n")
-Write-Host ("$user_guess times 3 is " + ((.\user32.dll/1) * 3))
+Write-Host ("$user_guess times 3 is " + (($user_guess/1) * 3))
 Read-Host
 
 #Task 4
