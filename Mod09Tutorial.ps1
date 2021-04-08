@@ -4,11 +4,18 @@
 clear
 Read-Host "Press enter to move from task to task"
 
+
+
+#This Task says Hello World
+
 #Task 1
 clear
 Write-Host "Task 1`r`n"
 Write-Host "Hello World"
 Read-Host
+
+
+#This Task gets the users input and checks to see if it is an integer
 
 #Task 2
 clear
@@ -43,11 +50,19 @@ while ($true)
     }
 }
 
+
+
+#This Task multiplies the users input by 3
+
 #Task 3
 clear
 Write-Host("Task 3`r`n")
 Write-Host ("$user_guess times 3 is " + (($user_guess/1) * 3))
 Read-Host
+
+
+
+#This Task counts up and on the 7th number says snowflake, and other numbers are odd and even.
 
 #Task 4
 clear
@@ -69,6 +84,10 @@ for ($i =1; $i -le 20; $i++)
     }
 }
 Read-Host
+
+
+#This Task elaborates on the previous task
+
 
 #Task 5
 clear
@@ -122,6 +141,10 @@ for ($i =1; $i -le $user_guess; $i++)
 Read-Host
 
 
+
+
+#This Task checks to see if the user inputs the correct last name
+
 #Task 6
 clear
 Write-Host ("Task 6`r`n")
@@ -138,6 +161,9 @@ while ($true)
     }
 }
 
+
+#This Task shows some work with a counter
+
 #Task 7
 clear
 Write-Host ("Task 7`r`n")
@@ -147,6 +173,9 @@ while ($counter -lt 10)
     Write-Host $counter
     $counter += 1
 }
+
+
+#This Task displays some uses of Get-Random
 
 #Task 8
 clear
