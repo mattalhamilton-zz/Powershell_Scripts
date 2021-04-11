@@ -40,11 +40,41 @@ $hearts = @(
 '4 of Hearts', '3 of Hearts',
 '2 of Hearts')
 
+#Declaring the play suits here
 
+$play_spades=@()
+$play_diamonds=@()
+$play_clubs=@()
+$play_hearts=@()
+
+
+
+
+
+#This is the new deck function
 
 function newdeck_func()
 {
-    Write-Host "Im the new deck function"
+
+foreach ($i in $spades)
+{
+    $play_spades += $i
+}
+
+foreach ($i in $diamonds)
+{
+    $play_diamonds += $i
+}
+
+foreach ($i in $clubs)
+{
+    $play_clubs += $i
+}
+
+foreach ($i in $hearts)
+{
+    $play_hearts += $i
+}
 
 }
 
