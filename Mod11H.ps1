@@ -55,6 +55,9 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
  'Leo Roy', 'Nelson Lopez')
 
 
+
+ #This is the first function, it enables the user to see lists of first names by input
+
  function func_1 ()
  {
     $counter_1 = 0
@@ -87,6 +90,8 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
 
  }
 
+ #This is the second function, it enables the user to see lists of last names by input
+
  function func_2 ()
  {
 
@@ -109,9 +114,9 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
 
     }
 
-    if ($counter_1 -eq 0)
+    if ($counter_2 -eq 0)
     {
-        Write-Host "`r`nNo first names were found starting with $input1 `r`n"
+        Write-Host "`r`nNo last names were found starting with $input2 `r`n"
     }
 
 
@@ -120,6 +125,9 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
     cls
 
  }
+
+
+ #This is the third function, it enables the user to add a name to the list.
 
  function func_3 ()
  {
@@ -144,11 +152,14 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
     
  }
 
+
+ # This is the fourth function, It enables the user to remove a name from the list, get to option 1, or return to the main menu if so desired.
+
  function func_4 ()
  {
     $input4 = Read-Host "Enter the full name, `"1`" to view names or `"Q`" to quit"
 
-    $input4 = (Get-Culture).TextInfo.ToTitleCase($input4.ToLower())
+    $Global:input4 = (Get-Culture).TextInfo.ToTitleCase($input4.ToLower())
 
 
     if ($input4 -eq 1)
@@ -160,11 +171,31 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
     elseif ($input4 -eq "Q")
     {
         clear
-        break
     }
 
     else
     {
+
+
+       if ($name_list.Contains("$input4"))
+       {
+            $index_input4 = $name_list.Indexof("input4")
+            
+            $temp_list = @()
+
+
+            for ($i=0; $i -lt "$index_input4"; $i++)
+            {
+                $temp_list += $name_list[$i]
+            }
+            
+            for ($i=$input4+1; $i -lt $name_list.Count; $i++)
+            {
+                $temp_list += $name_list[$i]
+            }
+          
+       }
+
        
     }
 
@@ -177,6 +208,7 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
  }
 
 
+ #This is the main menu for the script, offering the user five choices.
 
  while ($true)
  {
