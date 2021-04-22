@@ -59,22 +59,63 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
  {
     $input1 = Read-Host "Enter the first name, or a partial start of the first name."
 
+    $input1 = (Get-Culture).TextInfo.ToTitleCase($input1.ToLower())
+
+    Write-Host $input1
+    
+
  }
 
  function func_2 ()
  {
     $input2 = Read-Host "Enter the last name, or a partial start of the last name."
 
+        $input2 = (Get-Culture).TextInfo.ToTitleCase($input2.ToLower())
+
  }
 
  function func_3 ()
  {
     $input3_first = Read-Host "Enter the new first name"
+
+    $input3_first = (Get-Culture).TextInfo.ToTitleCase($input3_first.ToLower())
  }
 
  function func_4 ()
  {
     $input4 = Read-Host "Enter the full name, `"1`" to view names or `"Q`" to quit"
+
+    $input4 = (Get-Culture).TextInfo.ToTitleCase($input4.ToLower())
+
+
+    if ($input4 -eq 1)
+    {
+        clear
+        func_1
+    }
+
+    elseif ($input4 -eq "Q")
+    {
+        clear
+        break
+    }
+
+    else
+    {
+
+        $templist = @()
+
+        for ($i=0; $i -lt $input4; $i++)
+        {
+            $templist += $name_list[$i]
+        }
+        for ($i)
+
+
+
+        }
+
+    }
  }
 
 
