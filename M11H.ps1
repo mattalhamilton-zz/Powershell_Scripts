@@ -54,3 +54,75 @@ $name_list = @('Constance Castillo', 'Kerry Goodwin',
  'Minnie Weber', 'Geneva Pena', 'Byron Collier', 'Veronica Higgins',
  'Leo Roy', 'Nelson Lopez')
 
+
+ function func_1 ()
+ {
+    $input1 = Read-Host "Enter the first name, or a partial start of the first name."
+
+ }
+
+ function func_2 ()
+ {
+    $input2 = Read-Host "Enter the last name, or a partial start of the last name."
+
+ }
+
+ function func_3 ()
+ {
+    $input3_first = Read-Host "Enter the new first name"
+ }
+
+ function func_4 ()
+ {
+    $input4 = Read-Host "Enter the full name, `"1`" to view names or `"Q`" to quit"
+ }
+
+
+
+ while ($true)
+ {
+    
+    write-host("
+Please select from the following options:
+
+    1. List all names starting with one or more letters of the first name.
+    2. List all names starting with one or more letters of the last name.
+    3. Add a name.
+    4. Delete a name.
+    5. Exit
+
+")
+
+$user_choice = read-host "Option #"
+
+if ($user_choice -eq 1)
+{
+    clear
+    func_1
+}
+elseif ($user_choice -eq 2)
+{
+    clear
+    func_2
+}
+elseif ($user_choice -eq 3)
+{
+    clear
+    func_3
+}
+elseif ($user_choice -eq 4)
+{
+    clear
+    func_4
+}
+elseif ($user_choice -eq 5)
+{
+    clear
+    break
+}
+else
+{
+    clear
+}
+
+}
