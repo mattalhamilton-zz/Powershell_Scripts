@@ -3,7 +3,6 @@
 
 
 clear
-Write-Host "Processing the pcap file..."
 
 
 #Setting path to the user desktop
@@ -33,7 +32,9 @@ foreach ($line in Get-Content $file)
     $date_time = $split1.Substring(0)
     $date = $date_time.Substring(0)
     $date = $date[0].Substring(0,5)
-    $time = $date_time[0].Substring(6,11)
+    $date_time = $date_time[0].Split(".")
+    $time = $date_time[0].Split(“-”, [System.StringSplitOptions]::RemoveEmptyEntries)
+    $time = $time[1]
     $split2 = $line.Substring(0)
     $split2 = $split2.Split("]")
     $split2 = $split2[2]
@@ -43,21 +44,23 @@ foreach ($line in Get-Content $file)
     $classification = $split3[3]
     $classification = $classification.Trim("[Classification: ")
     $split4 = $line.Substring(0)
-    $split4 = $split4.Split("[Priority: ")
-    $Priority
+    $split4 = $split4.Split("[")
+    $split4 = $split4[5].Split("]")
+    $priority = $split4[0].Trim("Priority: ")
+    $split5 = $line.Substring(0)
+    $split5 = $split5.Split("}")
+    $ip_addresses = $split5[1]
+    $source_ip = $ip_addresses.Split("-")
+    $source_ip = $source_ip[0]
+    $destination_ip = $ip_addresses.Split(">")
+    $destination_ip = $destination_ip[1]
 
-    #$split4 = $split3.substring[1]
-    #$split4 = $split4.split("] ")
-    #$priority = $split4.substring[0]
-    #$priority = $priority.substring[-1]
-    #$split5 = $split4.substring[1].split("} ")
-    #$ip_addresses = $split5.substring[1]
-    #$ip_addresses = $ip_addresses.split[" -> "]
-    #$source_ip = $ip_addresses.substring[0]
-    #$destination_ip = $ip_addresses.substring[1]
+
     
-    
-    write-Host "$split4"
-    #Write-Output ($date + "," + $time + "," + $priority + "," + $classification + "," + $description + "," + $source_ip + "," + $destination_ip) | Out-File alert_data.csv -Encoding ascii -Append
-    #Write-Output $line_out | Out-File alert_data.csv -Encoding ascii -Append
+   #Writing the cut up line to the excel file on the desktop.
+    Write-Output ($date + "," + $time + "," + $priority + "," + $classification + "," + $description + "," + $source_ip + "," + $destination_ip) | Out-File alert_data.csv -Encoding ascii -Append
+
 }
+
+
+Read-Host "Processing is done.  Press Enter to End the Script."
