@@ -5,7 +5,7 @@ $major_descriptors=@("BAD-TRAFFIC","DNS SPOOF","ET CURRENT_EVENTS","ET DNS","ET 
 
 function func_1 ()
 {
-    
+    Write-Output ("Date,Time,Priority,Classification,Description,Packet Type,Source IP,Source Port,Destination IP, Destination Port") | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -encoding ascii
 
 }
 
@@ -49,6 +49,9 @@ if (-Not (Test-Path .\alert_full_short.zip))
     break
 }
 
+#unzipping alert_full_short.zip into named subdirectory
+Expand-Archive -Path .\alert_full_short.zip -DestinationPath .\Hamilton\Matt -Force
+
 
 While ($true)
 {
@@ -69,7 +72,7 @@ Please select from the following options:
 
     if ($option -eq "1")
     {
-        Write-Output ("") | Out-File "test_file.csv" -encoding ascii
+
         func_1
         continue
     }
