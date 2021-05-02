@@ -14,12 +14,25 @@ function func_1 ()
     {
         if ($line.Contains("[**]"))
         {
-            Read-Host "1"
+            $line = $line.substring(0)
+            $split1 = $line.Split("]")
+            $description = $split1[2]
+            $description = $description.Trim(" [**")
+
         }
 
         elseif ($line.Contains("Classification"))
         {
-            read-host "2"
+            $split2 = $line.substring(0)
+            $split2 = $line.Split("]")
+            $split2 = $split2[0]
+            $split2 = $split2.Split(":")
+            $classification = $split2[1]
+            $split3 = $line.substring(0)
+            $split3 = $line.Split("]")
+            $split3 = $split3[1]
+            $split3 = $split3.Split(":")
+            $priority = $split3[1]
         
         }
 
@@ -35,7 +48,7 @@ function func_1 ()
 
         elseif ($line.Length -eq 0)
         {
-            Read-Host "Empty line"
+            Write-Output ($classification + "," + $priority) | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -Encoding ascii -Append
         }
 
         else
