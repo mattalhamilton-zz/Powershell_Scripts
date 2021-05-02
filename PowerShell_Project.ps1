@@ -5,7 +5,52 @@ $major_descriptors=@("BAD-TRAFFIC","DNS SPOOF","ET CURRENT_EVENTS","ET DNS","ET 
 
 function func_1 ()
 {
+    $file = ".\Hamilton\Matt\alert_full_short.pcap"
+    
     Write-Output ("Date,Time,Priority,Classification,Description,Packet Type,Source IP,Source Port,Destination IP, Destination Port") | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -encoding ascii
+    $line_counter = 0
+
+    foreach ($line in Get-Content $file)
+    {
+        if ($line.Contains("[**]"))
+        {
+            Read-Host "1"
+        }
+
+        elseif ($line.Contains("Classification"))
+        {
+            read-host "2"
+        
+        }
+
+        elseif ($line.Contains("->") -and $line.Contains("/"))
+        {
+            Read-Host "3"
+        }
+
+        elseif ($line.Contains("DgmLen"))
+        {
+            Read-Host "4"
+        }
+
+        elseif ($line.Length -eq 0)
+        {
+            Read-Host "Empty line"
+        }
+
+        else
+        {
+            continue
+        }
+
+
+
+
+    }
+
+
+
+
 
 }
 
