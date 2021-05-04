@@ -5,6 +5,9 @@ global:$major_descriptors=@("BAD-TRAFFIC","DNS SPOOF","ET CURRENT_EVENTS","ET DN
 
 function func_1 ()
 {
+
+#This function figures out what line in the data file it is looking at, and parses it.
+
     Write-Host "Please be patient while the data is being parsed..."
 
     $file = ".\Hamilton\Matt\alert_full_short.pcap"
@@ -126,10 +129,26 @@ if ($selection -eq "exit" -or "Exit")
 function func_3 ()
 {
 
+    Read-Host "The Big Oof, Press enter and try another option"
 }
 
 function func_4 ()
 {
+#making a zip file of the stuff
+
+$zipdata = @{
+    Path = "Hamilton\Matt\alert_full_short.pcap" , "Hamilton\Matt\alert_full_short_cleaned.csv"
+    CompressionLevel = "Fastest"
+    DestinationPath = ".\Hamilton_matt"
+}
+Compress-Archive @zipdata -Force
+
+#cleaning up the mess
+del .\Hamilton\Matt\alert_full_short.pcap
+del .\Hamilton\Matt\alert_full_short_cleaned.csv
+del .\Hamilton\Matt
+del .\Hamilton
+
 
 }
 
