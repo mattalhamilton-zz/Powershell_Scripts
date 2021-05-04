@@ -38,7 +38,30 @@ function func_1 ()
 
         elseif ($line.Contains("->") -and $line.Contains("/"))
         {
-            Read-Host "3"
+            $split4 = $line.substring(0)
+            $split4 = $line.Split("-")
+            $date = $split4[0]
+            $split5 = $line.substring(0)
+            $split5 = $line.Split("-")
+            $time = $split5[1].substring(0,5)
+            $split6 = $line.substring(0)
+            $split6 = $line.Split(":")
+            $source_ip = $split6[2]
+            $source_ip = $source_ip.Split(" ")[1]
+            $split7 = $line.substring(0)
+            $split7 = $line.Split(" ")
+            $source_port = $split7[1].substring(0)
+            $source_port = $source_port.Split(":")[1]
+            $split8 = $line.substring(0)
+            $split8 = $line.Split(" ")
+            $split8 = $split8[3].substring(0)
+            $destination_ip = $split8.Split(":")[0]
+            $destination_port = $split8.Split(":")[1]
+
+
+
+
+ 
         }
 
         elseif ($line.Contains("DgmLen"))
@@ -48,7 +71,7 @@ function func_1 ()
 
         elseif ($line.Length -eq 0)
         {
-            Write-Output ($classification + "," + $priority) | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -Encoding ascii -Append
+            Write-Output ($destination_ip + "," + $destination_port) | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -Encoding ascii -Append
         }
 
         else
