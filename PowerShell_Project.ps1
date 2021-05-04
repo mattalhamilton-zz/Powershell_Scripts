@@ -63,10 +63,6 @@ function func_1 ()
             $destination_ip = $split8.Split(":")[0]
             $destination_port = $split8.Split(":")[1]
 
-
-
-
- 
         }
 
         elseif ($line.Contains("DgmLen"))
@@ -86,19 +82,14 @@ function func_1 ()
             continue
         }
 
-
-
-
     }
-
-
-
-
 
 }
 
 function func_2 ()
 {
+
+#This is the major descriptors function
 
     Write-Host "
 Enter one or more starting characters for your major descriptor, or
@@ -186,6 +177,7 @@ While ($true)
 
     clear
 
+#Here is the main menu
 
     Write-Host "
 -----MAIN MENU-----
