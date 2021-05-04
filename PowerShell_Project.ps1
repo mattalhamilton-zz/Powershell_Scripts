@@ -1,10 +1,12 @@
 ﻿#Matt Hamilton
 #PowerShell Project
 
-$major_descriptors=@("BAD-TRAFFIC","DNS SPOOF","ET CURRENT_EVENTS","ET DNS","ET INFO","ET MALWARE","ET POLICY","ET TROJAN","ET WEB_CLIENT","ICMP","INFO","SCAN","WEB-IIS")
+global:$major_descriptors=@("BAD-TRAFFIC","DNS SPOOF","ET CURRENT_EVENTS","ET DNS","ET INFO","ET MALWARE","ET POLICY","ET TROJAN","ET WEB_CLIENT","ICMP","INFO","SCAN","WEB-IIS")
 
 function func_1 ()
 {
+    Write-Host "Please be patient while the data is being parsed..."
+
     $file = ".\Hamilton\Matt\alert_full_short.pcap"
     
     Write-Output ("Date,Time,Priority,Classification,Description,Packet Type,Source IP,Source Port,Destination IP, Destination Port") | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -encoding ascii
@@ -66,12 +68,14 @@ function func_1 ()
 
         elseif ($line.Contains("DgmLen"))
         {
-            Read-Host "4"
+            $split9 = $line.substring(0)
+            $packet_type = $line.Split(" ")[0]
+            
         }
 
         elseif ($line.Length -eq 0)
         {
-            Write-Output ($destination_ip + "," + $destination_port) | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -Encoding ascii -Append
+            Write-Output ($date + "," + $time + "," + $priority + "," + $classification + "," + $description + "," + $packet_type + "," + $source_ip + "," + $source_port + "," + $destination_ip + "," + $destination_port) | Out-File ".\Hamilton\Matt\alert_full_short_cleaned.csv" -Encoding ascii -Append
         }
 
         else
@@ -92,6 +96,30 @@ function func_1 ()
 
 function func_2 ()
 {
+
+    Write-Host "
+Enter one or more starting characters for your major descriptor, or
+Enter nothing to see all major descriptors, or
+Enter 'exit' to return to the main menu:
+
+"
+
+$selection = Read-Host "Please enter your selection"
+
+if ($selection.Length -eq 0)
+{
+    
+    foreach ($i in global:$major_descriptors)
+    {
+        Write-Host "$i"
+    }
+}
+
+if ($selection -eq "exit" -or "Exit")
+{
+    return
+}
+
 
 }
 
